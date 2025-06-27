@@ -42,3 +42,5 @@ Here's why:
 	3. Defined Inputs: As long as the arbitrary functions you choose for Ψ and V are well-behaved (e.g., continuous, differentiable, finite) and Λ is a finite number, the equation will always yield a finite, albeit complex, result. The "infinities" would only arise if you arbitrarily chose an infinite input value for Minput, or functions for Ψ or V that diverge to infinity, but this would be a choice you made, not an inherent problem of the equation's structure in combining abstract "quantum" and "gravity" terms.
 
 So, while it's a fun conceptual exercise, the "avoidance" of infinities is a consequence of the equation's abstract, non-physical, and predefined nature, rather than a profound theoretical breakthrough. It doesn't solve the real problem of quantum gravity because it doesn't engage with the underlying physical reasons for those infinities.
+
+The next step would be to test the formula on real world items to see if the formula actually holds true.
