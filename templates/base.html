@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Banina's Recipe Hub{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1><a href="/">Banina's Recipe Hub</a></h1> {# Removed inline style here #}
+    </header>
+    <nav>
+        <a href="/">Home</a>
+    </nav>
+    <div class="container">
+        <div class="recipe-image">
+            <img src="{{ url_for('static', filename='Image of Cooking.jpg') }}">
+        </div>
+        {% block content %}{% endblock %}
+    </div>
+    <footer>
+        <p>&copy; 2025 Banina's Recipe Hub. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Recipe Categories{% endblock %}
+
+{% block content %}
+    <h2>Recipe Categories</h2>
+    <ul>
+        {% for category in categories %}
+            <li><a href="/category/{{ category.category }}">{{ category.category }}</a></li>
+        {% else %}
+            <li>No categories found. Please run database.py to populate the database.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,472 @@
+/* Basic Reset & Font Imports */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif; /* Primary body font */
+    background-color: #f0f8ff; /* AliceBlue - very subtle blue tint background */
+    color: #34495e; /* Dark grey-blue for main text */
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+/* Header Styling */
+header {
+    background-color: #3498db; /* Peter River Blue - main accent blue */
+    color: white;
+    padding: 1.8em 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    position: sticky; /* Make header sticky */
+    top: 0;
+    z-index: 1000; /* Ensure it stays on top */
+}
+
+header h1 {
+    margin: 0;
+}
+
+header h1 a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif; /* Heading font */
+    font-size: 2.8em;
+    letter-spacing: 0.05em;
+    transition: color 0.3s ease;
+}
+
+header h1 a:hover {
+    color: #ecf0f1; /* Light grey on hover */
+}
+
+/* Navigation Styling */
+nav {
+    background-color: #2c3e50; /* Wet Asphalt - very dark grey-blue for nav */
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+nav a {
+    display: inline-block;
+    color: white;
+    padding: 15px 25px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #34495e; /* Darker grey-blue on hover */
+}
+
+/* Main Content Container */
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 35px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+/* Headings within content */
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #3498db; /* Peter River Blue for headings */
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+h2 {
+    font-size: 2.2em;
+    border-bottom: 2px solid #e0e0e0; /* Subtle grey underline */
+    padding-bottom: 10px;
+}
+
+h3 {
+    font-size: 1.6em;
+    color: #555; /* Slightly softer color for sub-headings */
+}
+
+/* List Styling (Categories, Recipes, Ingredients) */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+ul li {
+    margin-bottom: 15px;
+    padding-left: 25px;
+    position: relative;
+}
+
+/* Custom bullet point */
+ul li::before {
+    content: '•';
+    color: #3498db; /* Peter River Blue bullet */
+    font-size: 1.2em;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+ul li a {
+    text-decoration: none;
+    color: #2980b9; /* Belize Hole Blue for links */
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+ul li a:hover {
+    color: #1abc9c; /* Turquoise for link hover - a vibrant contrast! */
+    text-decoration: underline;
+}
+
+/* Ordered List Styling (Instructions) */
+ol {
+    margin-left: 20px;
+    padding-left: 0;
+    counter-reset: instruction-step;
+}
+
+ol li {
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+}
+
+/* Custom numbering for instructions */
+ol li::before {
+    counter-increment: instruction-step;
+    content: counter(instruction-step) ".";
+    color: #3498db; /* Peter River Blue for numbering */
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* Back links */
+p a {
+    color: #2980b9;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+p a:hover {
+    text-decoration: underline;
+    color: #1abc9c;
+}
+
+/* Blurb Section */
+.blurb-section {
+    background-color: #e7f2fa; /* Very light blue background */
+    border-left: 6px solid #3498db; /* Peter River Blue border */
+    padding: 25px;
+    margin-bottom: 35px;
+    border-radius: 8px;
+    color: #444;
+    font-size: 1.05em;
+    line-height: 1.7;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.blurb-section p {
+    margin-bottom: 1em;
+}
+
+.blurb-section ul, .blurb-section ol {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 25px;
+    list-style-type: disc;
+}
+.blurb-section ol {
+    list-style-type: decimal;
+}
+
+.blurb-section ul li::before, .blurb-section ol li::before {
+    content: none;
+}
+
+
+/* Image Styling - Smaller Pictures */
+.category-image, .recipe-image {
+    text-align: center;
+    margin: 40px auto; /* Center the image container */
+    max-width: 70%; /* Limit the width of the container */
+}
+
+.category-image img, .recipe-image img {
+    max-width: 100%; /* Image fills its *parent* (the .category-image div) */
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease-in-out;
+    display: block; /* Ensures max-width and margin:auto work consistently */
+    margin: 0 auto; /* Centers the image itself within its div */
+}
+
+.category-image img:hover, .recipe-image img:hover {
+    transform: scale(1.02);
+}
+
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 1.8em 0;
+    margin-top: 40px;
+    background-color: #2c3e50; /* Wet Asphalt - Darker blue */
+    color: white;
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.08);
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+/* Basic Responsiveness - Adjust container width */
+@media (max-width: 768px) {
+    .container {
+        margin: 20px auto;
+        padding: 20px;
+    }
+    header h1 a {
+        font-size: 2em;
+    }
+    h2 {
+        font-size: 1.8em;
+    }
+    .category-image, .recipe-image {
+        max-width: 85%; /* Slightly larger on smaller screens where space is limited */
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 a {
+        font-size: 1.5em;
+    }
+    nav a {
+        padding: 10px 15px;
+        font-size: 0.9em;
+    }
+    .container {
+        margin: 15px;
+        padding: 15px;
+    }
+    .blurb-section {
+        padding: 15px;
+    }
+    .category-image, .recipe-image {
+        max-width: 95%; /* Even larger on very small screens */
+    }
+}
+
+
+/* --- Review Section Styles (Integrated) --- */
+.reviews-section {
+    margin-top: 50px;
+    padding-top: 30px; /* More padding from the top */
+    border-top: 1px dashed #cfd8dc; /* Lighter, dashed border for separation */
+}
+
+.reviews-section h3 {
+    margin-bottom: 25px;
+    color: #3498db; /* Blue for review heading */
+    border-bottom: none; /* Ensure no underline from general h2 rule */
+    padding-bottom: 0;
+}
+
+.average-rating {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Star Rating System (CSS-only for display) */
+.stars {
+    --rating: 0; /* Custom property for star fill */
+    display: inline-block;
+    font-size: 1.5em; /* Size of the stars */
+    line-height: 1;
+    color: #ccc; /* Empty star color */
+    position: relative;
+    width: 7.5em; /* 5 stars * 1.5em/star */
+    height: 1.5em;
+    overflow: hidden;
+    vertical-align: middle; /* Align with text */
+}
+
+.stars::before {
+    content: '★★★★★'; /* All 5 stars */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(var(--rating, 0) / 5 * 100%); /* Calculate fill percentage */
+    overflow: hidden;
+    color: #f39c12; /* Filled star color (gold/orange) */
+}
+
+.rating-text {
+    font-size: 0.9em;
+    font-weight: normal;
+    color: #777;
+}
+
+/* Review List */
+.review-list {
+    margin-top: 30px;
+}
+
+.review-item {
+    background-color: #fcfdfe; /* Very light subtle blue background for each review */
+    border: 1px solid #e0e0e0; /* Softer border */
+    border-radius: 8px;
+    padding: 20px 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04); /* Lighter shadow */
+}
+
+.review-item .review-meta {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    gap: 8px;
+}
+
+.review-item .review-meta strong {
+    color: #333;
+    font-weight: 700;
+}
+
+.review-item .review-date {
+    font-style: italic;
+    color: #888;
+}
+
+.review-item .review-comment {
+    font-size: 1em;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* Review Form */
+.review-form {
+    background-color: #fcfdfe; /* Match review item background */
+    border: 1px solid #e0e0e0; /* Match review item border */
+    border-radius: 8px;
+    padding: 30px;
+    margin-top: 40px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+    width: calc(100% - 22px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+/* Star Rating Input (hidden radio buttons, styled labels) */
+.star-rating {
+    display: flex; /* Use flexbox to align stars and numbers */
+    justify-content: flex-end; /* Align to the right (RTL for stars) */
+    /* REMOVED: font-size: 0; <--- This was the culprit! */
+    direction: rtl; /* For right-to-left star selection */
+    gap: 5px; /* Space between each star/number pair */
+}
+
+.star-rating input[type="radio"] {
+    display: none; /* Hide actual radio buttons */
+}
+
+.star-rating label {
+    font-size: 1.8em; /* Size of clickable stars */
+    color: #ccc; /* Empty star color */
+    cursor: pointer;
+    padding: 0 2px;
+    transition: color 0.2s ease-in-out;
+    display: flex; /* Make label a flex container */
+    flex-direction: column; /* Stack star icon and number vertically */
+    align-items: center; /* Center horizontally */
+    line-height: 1; /* Remove extra line height from star symbol */
+    position: relative; /* For star-number positioning */
+}
+
+/* Hide the actual star text and use a pseudo-element for the icon */
+.star-rating label::before {
+    content: '★'; /* Star icon */
+    font-size: 1em; /* Use the label's font-size for the star icon */
+    display: block; /* Ensure it's on its own line within the flex item */
+    line-height: 1;
+    padding-bottom: 2px; /* Small space between star and number */
+}
+
+/* Style for the small numbers */
+.star-number {
+    font-size: 0.45em; /* Smaller font size relative to label font-size */
+    color: #666; /* Darker color for numbers */
+    font-weight: 600;
+    line-height: 1; /* Keep number compact */
+    margin-top: 2px; /* Small space below the star icon */
+    position: absolute; /* Position relative to label */
+    top: calc(100% - 0.5em); /* Place below the star */
+    left: 50%;
+    transform: translateX(-50%); /* Center the number */
+    white-space: nowrap; /* Prevent number from wrapping */
+    pointer-events: none; /* Don't interfere with label click */
+}
+
+
+/* Hover/Checked states for stars */
+.star-rating label:hover,
+.star-rating label:hover ~ label,
+.star-rating input[type="radio"]:checked ~ label {
+    color: #f39c12; /* Filled star color (gold/orange) */
+}
+
+/* Adjustments for review section on small screens */
+@media (max-width: 480px) {
+    .reviews-section h3 {
+        font-size: 1.8em; /* Make review heading smaller */
+    }
+    .star-rating label {
+        font-size: 1.5em; /* Smaller clickable stars */
+    }
+    .stars {
+        font-size: 1.2em; /* Smaller display stars */
+    }
+    .star-rating {
+        gap: 2px; /* Reduce gap on small screens */
+    }
+}

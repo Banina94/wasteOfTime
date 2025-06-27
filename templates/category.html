@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}{{ category }} Recipes{% endblock %}
+
+{% block content %}
+    <h2>{{ category }} Recipes</h2>
+    <p><a href="/">Back to Categories</a></p>
+
+    {# Category-specific blurb #}
+    {% if blurb %}
+        <div class="blurb-section">
+            {{ blurb | safe }} {# 'safe' filter is needed to render HTML tags from the blurb string #}
+        </div>
+    {% endif %}
+
+    <h3>Recipes:</h3>
+    <ul>
+        {% for recipe in recipes %}
+            <li><a href="/recipe/{{ recipe.id }}">{{ recipe.name }}</a></li>
+        {% else %}
+            <li>No recipes found in this category.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

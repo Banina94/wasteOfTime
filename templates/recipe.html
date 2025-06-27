@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block title %}{{ recipe.name }}{% endblock %}
+
+{% block content %}
+    <h2>{{ recipe.name }}</h2>
+    <p>Category: <a href="/category/{{ recipe.category }}">{{ recipe.category }}</a></p>
+    <p><a href="/category/{{ recipe.category }}">Back to {{ recipe.category }}</a> | <a href="/">Back to Categories</a></p>
+
+    <h3>Ingredients:</h3>
+    <ul>
+        {% for ingredient in ingredients %}
+            <li>{{ ingredient.ingredient_text }}</li>
+        {% else %}
+            <li>No ingredients listed.</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Instructions:</h3>
+    <ol>
+        {% for instruction in instructions %}
+            <li>{{ instruction.instruction_text }}</li>
+        {% else %}
+            <li>No instructions provided.</li>
+        {% endfor %}
+    </ol>
+
+    <hr> {# Horizontal rule to separate sections #}
+
+    {# --- NEW: Review Section --- #}
+    <div class="reviews-section">
+        <h3>Customer Reviews ({{ num_reviews }} Reviews)</h3>
+        {% if num_reviews > 0 %}
+            <p class="average-rating">Average Rating: 
+                <span class="stars" style="--rating: {{ average_rating }};"></span> 
+                {{ average_rating }} out of 5
+            </p>
+        {% else %}
+            <p>No reviews yet. Be the first to review this recipe!</p>
+        {% endif %}
+
+        {# Display existing reviews #}
+        <div class="review-list">
+            {% for review in reviews %}
+                <div class="review-item">
+                    <p class="review-meta">
+                        <strong>{{ review.reviewer_name }}</strong> 
+                        <span class="stars" style="--rating: {{ review.rating }};"></span> 
+                        <span class="rating-text">({{ review.rating }} out of 5)</span>
+                        <span class="review-date">on {{ review.created_at.split(' ')[0] }}</span> {# Show only date for simplicity #}
+                    </p>
+                    <p class="review-comment">{{ review.comment }}</p>
+                </div>
+            {% endfor %}
+        </div>
+
+        <h4>Submit Your Review:</h4>
+        <form action="{{ url_for('submit_review') }}" method="POST" class="review-form">
+            <input type="hidden" name="recipe_id" value="{{ recipe.id }}">
+
+            <div class="form-group">
+                <label for="reviewer_name">Your Name:</label>
+                <input type="text" id="reviewer_name" name="reviewer_name" required>
+            </div>
+
+            <div class="form-group">
+                <label>Rating:</label>
+                <div class="star-rating">
+                    {# Stars are typically displayed right-to-left for input #}
+                    <input type="radio" id="star5" name="rating" value="5" required><label for="star5" title="5 stars"></label>
+                    <input type="radio" id="star4" name="rating" value="4"><label for="star4" title="4 stars"></label>
+                    <input type="radio" id="star3" name="rating" value="3"><label for="star3" title="3 stars"></label>
+                    <input type="radio" id="star2" name="rating" value="2"><label for="star2" title="2 stars"></label>
+                    <input type="radio" id="star1" name="rating" value="1"><label for="star1" title="1 star"></label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="comment">Comment:</label>
+                <textarea id="comment" name="comment" rows="4"></textarea>
+            </div>
+
+            <button type="submit" class="submit-button">Submit Review</button>
+        </form>
+    </div>
+{% endblock %}
