@@ -1,5 +1,5 @@
 import numpy as np
-import plotly.graph_objects as go # Changed to graph_objects for surface plots
+import plotly.graph_objects as go
 import pandas as pd
 import plotly.io as pio
 
@@ -159,25 +159,24 @@ if selected_mass_index != -1:
 
     # --- GENERATE THE 3D SURFACE PLOT USING PLOTLY GO ---
     fig = go.Figure(data=[go.Surface(z=Z_energy_grid, x=X_grid, y=T_grid,
-                                     # Optional: add colorscale based on Z values
-                                     colorscale='Viridis', # Example colorscale
+                                     colorscale='Viridis',
                                      cmin=np.nanmin(Z_energy_grid) if np.any(np.isfinite(Z_energy_grid)) else None,
                                      cmax=np.nanmax(Z_energy_grid) if np.any(np.isfinite(Z_energy_grid)) else None
                                      )])
 
     fig.update_layout(
-        title=f"Abstract Energy Surface Plot for {selected_object_name}<br><sup>(Purely Mathematical Exercise with Arbitrary Assumptions)</sup>",
+        title=f"Abstract Energy Surface for {selected_object_name} Mass<br><sup>(Mathematical Exploration of Abstract Spatial (x) and Temporal (t) Coordinates)</sup>",
         scene=dict(
-            xaxis_title="Abstract X-Proxy (Arbitrary Units)",
-            yaxis_title="Abstract T-Proxy (Arbitrary Units)",
+            xaxis_title="Abstract Spatial Coordinate (x) (Arbitrary Units)", # Renamed
+            yaxis_title="Abstract Temporal Coordinate (t) (Arbitrary Units)", # Renamed
             zaxis_title="Abstract Energy (J-like Units)",
-            xaxis_type="log", # X and Y are from logspace, so they are always positive
+            xaxis_type="log",
             yaxis_type="log",
-            zaxis_type="log" if log_z_scale else "linear", # Apply log scale conditionally
-            camera=dict(eye=dict(x=1.5, y=1.5, z=0.8)) # Adjust camera angle
+            zaxis_type="log" if log_z_scale else "linear",
+            camera=dict(eye=dict(x=1.5, y=1.5, z=0.8))
         ),
         title_x=0.5,
-        hoverlabel=dict(namelength=-1) # Show full names on hover
+        hoverlabel=dict(namelength=-1)
     )
     
     fig.show()
