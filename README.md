@@ -11,7 +11,7 @@ Conclusions about Unknown Variables (in a Physical Context)
 
 Within the context of fundamental physics, the following variables in this equation would be either undefined, unknown, or context-dependent, preventing its physical application:
 
-	1. λ (Abstract Scale Parameter): This variable has no physical meaning in current physics. It was introduced purely as a mathematical blending coefficient to transition between conceptual "quantum" and "relativistic" mass influences. Its value cannot be determined for any real object or physical scenario.
+	1. λ (Abstract Scale Parameter): This variable has no physical meaning in current physics. It was introduced purely as a mathematical blending coefficient to transition between conceptual "quantum" and "relativistic" mass influences. A graph of the Abstract Scale Parameter has also been made.
  
 	2. Ψ(x,t) (Wavefunction) and its Derivatives (∂t∂Ψ​, ∂x2∂2Ψ​): These represent the quantum state of a particle. For any real object (like a proton or neutron), its wavefunction is highly complex, specific to its environment, and not a single, fixed numerical value. For macroscopic objects (like planets), the concept of a single, coherent wavefunction is not applicable in standard QM.
  
