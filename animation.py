@@ -58,5 +58,4 @@ def update(frame):
 
 # Animate
 ani = animation.FuncAnimation(fig, update, frames=len(times), blit=True, interval=100)
-plt.close()
-ani
+plt.show() # This line will display the animation
