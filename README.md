@@ -1,6 +1,6 @@
 Our journey began with exploring the incompatibility between Einstein's General Relativity (GR) and Quantum Mechanics (QM) at the quantum level, a major unsolved problem in physics. We established that mass is typically a parameter, not a variable derived from these theories, though we algebraically isolated it as requested. We then clarified that directly graphing these complex relationships as simple "lines" for mass is largely unfeasible beyond $E=mc^2$.
 
-Ignoring fundamental physics, we ventured into purely mathematical construction. We successfully developed a Generalized Mass Function ($M_{Gen}$) and subsequently derived an **Energy Function ($E_{Gen}$)** from it. This construction abstractly blends quantum and relativistic mass definitions using an arbitrary scale parameter ($\lambda$) and exponential weighting. Our "simulations" were mathematical demonstrations confirming $\lambda$'s role in controlling this theoretical blend. These exercises underscored that while mathematically consistent, the formulas lack any basis in current physical laws. They are abstract thought experiments, not testable theories. The fundamental unification of GR and QM remains a profound, open challenge in physics.
+Ignoring fundamental physics, we ventured into purely mathematical construction. We successfully developed a Generalized Mass Function ($M_{Gen}$) and subsequently derived an **Energy Function ($E_{Gen}$)** from it. This construction abstractly blends quantum and relativistic mass definitions using an arbitrary scale parameter ($\lambda$) and exponential weighting. Our "simulations" were mathematical demonstrations confirming $\lambda$'s role in controlling this theoretical blend. These exercises underscored that while mathematically consistent, the formulas lack any basis in current physical laws. They are abstract thought experiments. The fundamental unification of GR and QM remains a profound, open challenge in physics.
 
 **Final Mathematically Derived Equation for Energy ($E_{Gen}$):**
 
@@ -8,7 +8,7 @@ Based on our abstract mathematical construction, the equation solved for Energy 
 
 $E = c^2 \cdot e^{\lambda M_{input}} (1 + e^\lambda)^{- \left(2\left(i\hbar\frac{\partial\Psi(x,t)}{\partial t} - V(x,t)\Psi(x,t)\right) - \hbar^2\frac{\partial^2\Psi(x,t)}{\partial x^2}\right)}$
 
-This equation is mathematically valid as an algebraic rearrangement of our constructed blended mass formula. However, it does not hold for fundamental physics; it is not a physically derived law, nor can it be used to predict real-world phenomena.
+This equation is mathematically valid as an algebraic rearrangement of our constructed blended mass formula. However, it is not a physically derived law, nor can it be used to predict real-world phenomena.
 
 **Conclusions about Unknown Variables (in a Physical Context):**
 
