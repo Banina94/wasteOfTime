@@ -1,0 +1,24 @@
+// Automatic FlutterFlow imports
+import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import 'index.dart'; // Imports other custom actions
+import '/flutter_flow/custom_functions.dart'; // Imports custom functions
+import 'package:flutter/material.dart';
+// Begin custom action code
+// DO NOT REMOVE OR MODIFY THE CODE ABOVE!
+
+import 'package:firebase_auth/firebase_auth.dart';
+
+Future deleteUser() async {
+  // Delete user and user information from Firebase database given their log in JWT ID Token
+  if (FirebaseAuth.instance.currentUser != null) {
+    try {
+      await FirebaseAuth.instance.currentUser!.delete();
+    } catch (error) {
+      print('Error deleting user: $error');
+    }
+  } else {
+    return null;
+  }
+}
