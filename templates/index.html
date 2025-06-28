@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Sudoku Puzzle</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 30px;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+        }
+
+        .controls {
+            margin-bottom: 25px;
+            background-color: #fff;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .controls label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .controls select, .controls button {
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .controls select {
+            background-color: #f9f9f9;
+        }
+
+        .controls button {
+            background-color: #3498db;
+            color: white;
+            border-color: #3498db;
+        }
+
+        .controls button:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .info {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            color: #666;
+        }
+
+        .sudoku-grid {
+            display: grid;
+            grid-template-columns: repeat(9, 50px); /* Larger cells */
+            grid-template-rows: repeat(9, 50px);
+            border: 3px solid #2c3e50; /* Thicker border */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            border-radius: 5px;
+            overflow: hidden; /* Ensures borders are contained */
+        }
+
+        .cell {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5em; /* Larger font */
+            border: 1px solid #ddd;
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
+        }
+
+        .cell input {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            font-size: 1.5em;
+            border: none;
+            background-color: transparent;
+            outline: none; /* Remove blue outline on focus */
+            -moz-appearance: textfield; /* Hide arrows for number input in Firefox */
+        }
+
+        /* Hide arrows for number input in Chrome, Safari, Edge */
+        .cell input::-webkit-outer-spin-button,
+        .cell input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .cell.fixed {
+            background-color: #e9ebee; /* Lighter background for fixed cells */
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        /* Thick borders for 3x3 blocks */
+        .cell:nth-child(3n) { border-right: 2px solid #555; }
+        .cell:nth-child(9n+1) { clear: both; } /* Ensures cells wrap correctly */
+        .cell:nth-child(n+19):nth-child(-n+27),
+        .cell:nth-child(n+46):nth-child(-n+54) { border-bottom: 2px solid #555; }
+        .cell:nth-child(3n+1) { border-left: 2px solid #555; } /* Corrected for initial block line */
+        .cell:nth-child(n+1):nth-child(-n+9) { border-top: 2px solid #555; }
+        .cell:nth-child(n+73):nth-child(-n+81) { border-bottom: 2px solid #555; }
+
+        /* Specific border adjustments for top/left/right/bottom edges of the overall grid */
+        .sudoku-grid .cell:nth-child(1), .sudoku-grid .cell:nth-child(2), .sudoku-grid .cell:nth-child(3),
+        .sudoku-grid .cell:nth-child(4), .sudoku-grid .cell:nth-child(5), .sudoku-grid .cell:nth-child(6),
+        .sudoku-grid .cell:nth-child(7), .sudoku-grid .cell:nth-child(8), .sudoku-grid .cell:nth-child(9) {
+            border-top: 3px solid #2c3e50;
+        }
+        .sudoku-grid .cell:nth-child(9n+1) {
+            border-left: 3px solid #2c3e50;
+        }
+        .sudoku-grid .cell:nth-child(9n) {
+            border-right: 3px solid #2c3e50;
+        }
+        .sudoku-grid .cell:nth-child(n+73) {
+            border-bottom: 3px solid #2c3e50;
+        }
+
+        .solve-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .solve-button:hover {
+            background-color: #229954;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .message {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #e74c3c; /* Red for errors */
+        }
+        .message.success {
+            color: #27ae60; /* Green for success */
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Interactive Sudoku Puzzle</h1>
+
+    <div class="controls">
+        <label for="level">Select Difficulty:</label>
+        <select id="level">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select>
+        <button onclick="generateNewPuzzle()">Generate New Puzzle</button>
+    </div>
+
+    <div class="info">
+        Difficulty: <span id="difficulty-display"></span> | Clues: <span id="clues-display"></span>
+    </div>
+
+    <div class="sudoku-grid" id="sudoku-grid">
+        </div>
+
+    <button class="solve-button" onclick="solveCurrentPuzzle()">Solve Puzzle</button>
+    <div class="message" id="message-display"></div>
+
+    <script>
+        let currentPuzzle = []; // The initial puzzle as received from the backend
+        // currentSolution is no longer strictly needed if the solve_puzzle endpoint gives back the solved grid
+        // let currentSolution = [];
+
+        async function generateNewPuzzle() {
+            const level = document.getElementById('level').value;
+            try {
+                const response = await fetch('/generate_puzzle', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ level: level })
+                });
+                const data = await response.json();
+
+                if (data.error) {
+                    displayMessage(data.error, 'error');
+                    return;
+                }
+
+                currentPuzzle = data.puzzle; // Store the initial puzzle
+                // currentSolution = data.solution; // No longer storing the full solution received during generation
+                createGrid(data.puzzle);
+                document.getElementById('difficulty-display').textContent = data.difficulty;
+                document.getElementById('clues-display').textContent = data.clues;
+                displayMessage('', 'clear'); // Clear any previous messages
+            } catch (error) {
+                console.error('Error generating puzzle:', error);
+                displayMessage('Failed to generate puzzle. Please try again.', 'error');
+            }
+        }
+
+        function createGrid(puzzle) {
+            const gridElement = document.getElementById('sudoku-grid');
+            gridElement.innerHTML = ''; // Clear existing grid
+            for (let r = 0; r < 9; r++) {
+                for (let c = 0; c < 9; c++) {
+                    const cell = document.createElement('div');
+                    cell.classList.add('cell');
+                    const value = puzzle[r][c];
+
+                    if (value !== 0) {
+                        cell.textContent = value;
+                        cell.classList.add('fixed'); // Fixed clues from the generator
+                    } else {
+                        const input = document.createElement('input');
+                        input.type = 'text'; // Use 'text' to prevent default number input behavior (arrows)
+                        input.maxLength = '1';
+                        // Allow only single digits 1-9
+                        input.oninput = (event) => {
+                            const val = event.target.value.replace(/[^1-9]/g, '');
+                            event.target.value = val;
+                        };
+                        input.dataset.row = r; // Store row and column for easy access
+                        input.dataset.col = c;
+                        cell.appendChild(input);
+                    }
+                    gridElement.appendChild(cell);
+                }
+            }
+        }
+
+        async function solveCurrentPuzzle() {
+            if (currentPuzzle.length === 0) {
+                displayMessage('Please generate a puzzle first!', 'error');
+                return;
+            }
+
+            // Get the current state of the puzzle from the displayed grid inputs
+            const currentGridState = [];
+            for (let r = 0; r < 9; r++) {
+                currentGridState.push([]);
+                for (let c = 0; c < 9; c++) {
+                    const cellIndex = r * 9 + c;
+                    const cellElement = document.querySelectorAll('.sudoku-grid .cell')[cellIndex];
+                    if (cellElement.classList.contains('fixed')) {
+                        currentGridState[r].push(parseInt(cellElement.textContent));
+                    } else {
+                        const inputElement = cellElement.querySelector('input');
+                        const value = inputElement.value ? parseInt(inputElement.value) : 0;
+                        currentGridState[r].push(value);
+                    }
+                }
+            }
+
+            try {
+                // Send the current grid state to the backend to get the solution
+                const response = await fetch('/solve_puzzle', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ puzzle: currentGridState })
+                });
+                const data = await response.json();
+
+                if (data.error) {
+                    displayMessage(data.error, 'error');
+                    return;
+                }
+
+                // Populate the grid with the solved puzzle (which should have numbers in missing cells)
+                const solvedGrid = data.solution;
+                for (let r = 0; r < 9; r++) {
+                    for (let c = 0; c < 9; c++) {
+                        const cellIndex = r * 9 + c;
+                        const cellElement = document.querySelectorAll('.sudoku-grid .cell')[cellIndex];
+                        // Only fill if it's not a fixed clue from the original puzzle
+                        if (currentPuzzle[r][c] === 0) { // Check if it was originally a missing cell
+                            const inputElement = cellElement.querySelector('input');
+                            inputElement.value = solvedGrid[r][c];
+                        }
+                    }
+                }
+                displayMessage('Puzzle solved!', 'success');
+
+            } catch (error) {
+                console.error('Error solving puzzle:', error);
+                displayMessage('Failed to solve puzzle. Please try again.', 'error');
+            }
+        }
+
+        function displayMessage(message, type = 'info') {
+            const messageDisplay = document.getElementById('message-display');
+            messageDisplay.textContent = message;
+            messageDisplay.classList.remove('error', 'success'); // Clear previous types
+            if (type === 'error') {
+                messageDisplay.classList.add('error');
+            } else if (type === 'success') {
+                messageDisplay.classList.add('success');
+            }
+        }
+
+        // Generate an initial puzzle when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            generateNewPuzzle();
+        });
+
+    </script>
+</body>
+</html>
