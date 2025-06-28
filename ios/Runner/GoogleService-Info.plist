@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>94605348705-k3b5l4vceh72neguq84svp2r41552qtg.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.94605348705-k3b5l4vceh72neguq84svp2r41552qtg</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>94605348705-cfqanmigcqijbage3f31qrq0tr3872lu.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCQr0wKe4gD0pXuvJAXVywD6GCOpRct9N0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>94605348705</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.mycompany.revibe</string>
+	<key>PROJECT_ID</key>
+	<string>re-vibe-rnbhrn</string>
+	<key>STORAGE_BUCKET</key>
+	<string>re-vibe-rnbhrn.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:94605348705:ios:57485719c30f5d0cd23f20</string>
+</dict>
+</plist>
