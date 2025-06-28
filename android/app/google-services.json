@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "94605348705",
+    "project_id": "re-vibe-rnbhrn",
+    "storage_bucket": "re-vibe-rnbhrn.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:94605348705:android:5e0f2c4e31b49002d23f20",
+        "android_client_info": {
+          "package_name": "com.mycompany.revibe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "94605348705-cfqanmigcqijbage3f31qrq0tr3872lu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.revibe",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "94605348705-9qdq3d6c4bc679iaml85hcrd31qbj73p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiDAHZRchd6hOiq4nOqHfnNFYgqN97OFY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "94605348705-9qdq3d6c4bc679iaml85hcrd31qbj73p.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "94605348705-k3b5l4vceh72neguq84svp2r41552qtg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycompany.revibe"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

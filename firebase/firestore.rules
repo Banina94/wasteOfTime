@@ -1,0 +1,32 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{document} {
+      allow create: if false;
+      allow read: if false;
+      allow write: if false;
+      allow delete: if request.auth.uid == resource.data.email;
+    }
+
+    match /customerService/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /giftCards/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if false;
+      allow delete: if request.auth.uid == resource.data.giftCardCompanyName;
+    }
+
+    match /reVibeCompanySelected/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow write: if false;
+      allow delete: if false;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "reVibeCompanySelected",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "reVibeType",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "reVibeCompanyName",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ]
+}
