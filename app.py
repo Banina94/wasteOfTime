@@ -29,7 +29,7 @@ def query_db(query, args=(), one=False):
 category_descriptions = {
     # ... (your existing category_descriptions here) ...
     "Cookies": """
-        <p>This page contains eight cookie recipes based on the
+        <p>This page contains cookie recipes based on the
         same basic formula. From this starting point, you can continue to build and
         customize your own recipes. I hope this book serves as a foundation for your
         experimentation and exploration in creating your own unique cookies.</p>
@@ -79,8 +79,8 @@ category_descriptions = {
         </ul>
     """,
     "Soup": """
-        <p>Similar to the page on Eight Cookie Recipes, this page
-        features eight soup recipes, all built from a simple base recipe. While brand
+        <p>Similar to the page on cookie recipes and fried chicken recipes, this page
+        features soup recipes, all built from a simple base recipe. While brand
         choices aren’t crucial, each soup recipe includes fish sauce, soup soy sauce,
         and cooking wine. I typically use Thai fish sauce, Korean soup soy sauce, and
         Chinese cooking wine. Korean soup soy sauce is made from water, soybeans, salt,
