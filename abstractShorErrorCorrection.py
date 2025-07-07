@@ -11,7 +11,7 @@ def shor_ai_qec(N, quantum_device, ai_model):
   qec_strategy = ai_model.predict_optimal_qec(circuit, quantum_device)
 
   # Apply chosen QEC strategy (e.g., surface code with dynamic decoding)
-  corrected_circuit = apple_qec(circuit, qec_strategy)
+  corrected_circuit = apply_qec(circuit, qec_strategy)
 
   # Run circuit with mid-run AI-assisted syndrome decoding
   result = run_quantum_circuit(corrected_circuit, ai_model=ai_model)
