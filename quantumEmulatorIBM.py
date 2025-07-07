@@ -80,7 +80,8 @@ for epoch in range(10):  # Short run for demo
         loss = loss_fn(y_pred, Y[i])
         loss.backward()
 
-plt.show()
         optimizer.step()
         total_loss += loss.item()
     print(f"Epoch {epoch+1} Loss: {total_loss:.4f}")
+
+plt.show()
