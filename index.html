@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Annoying Orange, Baby Shark & Electric Frog</title>
+  <style>
+    body {
+      background: #222;
+      color: #fff;
+      font-family: sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .character {
+      display: inline-block;
+      margin: 40px;
+    }
+
+    .orange, .frog {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      position: relative;
+      margin: auto;
+    }
+
+    .orange {
+      background: orange;
+      box-shadow: inset -5px -5px 15px #cc6600;
+    }
+
+    .frog {
+      background: limegreen;
+      box-shadow: 0 0 15px 5px #00ff00;
+    }
+
+    .eye {
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      position: absolute;
+      top: 40px;
+    }
+
+    .orange .eye.left { left: 35px; }
+    .orange .eye.right { right: 35px; }
+
+    .frog .eye {
+      width: 30px;
+      height: 30px;
+      box-shadow: 0 0 5px #0f0;
+    }
+
+    .frog .eye.left { left: 25px; }
+    .frog .eye.right { right: 25px; top: 30px; }
+
+    .mouth {
+      width: 60px;
+      height: 20px;
+      background: black;
+      border-radius: 0 0 50% 50%;
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .frog .bolt {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 24px;
+      color: yellow;
+      text-shadow: 0 0 10px #ff0;
+    }
+
+    .message {
+      margin-top: 15px;
+      font-size: 18px;
+      height: 24px;
+    }
+
+    svg {
+      width: 200px;
+      height: 100px;
+      display: block;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Annoying Orange, Baby Shark & Electric Frog</h1>
+
+  <div class="character">
+    <div class="orange">
+      <div class="eye left"></div>
+      <div class="eye right"></div>
+      <div class="mouth"></div>
+    </div>
+    <div class="message" id="orange-message"></div>
+  </div>
+
+  <div class="character">
+    <svg viewBox="0 0 200 100">
+      <ellipse cx="100" cy="50" rx="60" ry="30" fill="skyblue"/>
+      <polygon points="160,50 190,30 190,70" fill="skyblue"/>
+      <circle cx="80" cy="40" r="5" fill="black"/>
+      <path d="M 85 60 Q 100 75 115 60" stroke="black" stroke-width="2" fill="none"/>
+    </svg>
+    <div class="message" id="shark-message"></div>
+  </div>
+
+  <div class="character">
+    <div class="frog">
+      <div class="eye left"></div>
+      <div class="eye right"></div>
+      <div class="bolt">&#9889;</div>
+    </div>
+    <div class="message" id="frog-message"></div>
+  </div>
+
+  <script>
+    function typeLoop(id, text, speed = 100, pause = 1000) {
+      let el = document.getElementById(id);
+      let i = 0;
+
+      function type() {
+        if (i <= text.length) {
+          el.innerHTML = text.substring(0, i++);
+          setTimeout(type, speed);
+        } else {
+          setTimeout(() => {
+            i = 0;
+            el.innerHTML = '';
+            setTimeout(type, speed);
+          }, pause);
+        }
+      }
+      type();
+    }
+
+    typeLoop("orange-message", "Hi! Hi! Hi! Hi!");
+    typeLoop("shark-message", "Baby shark, ba doo doo doo doo...");
+    typeLoop("frog-message", "Vroom! Vroom! Vroom!");
+  </script>
+
+</body>
+</html>
