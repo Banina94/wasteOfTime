@@ -77,7 +77,8 @@ plt.text(masses[-1] * 0.5, 1.000001, 'Classical Dominant',
 plt.axvline(x=m_P, color='red', linestyle=':', linewidth=1.5, label=f'Planck Mass ($m_P = {m_P:.2e}$ kg)')
 
 # Add an inset for the deviation to show it more clearly at larger masses
-ax_inset = plt.axes([0.6, 0.6, 0.28, 0.28]) # [left, bottom, width, height]
+# Position the inset in the middle-right area
+ax_inset = plt.axes([0.65, 0.35, 0.25, 0.25]) # [left, bottom, width, height]
 plt.loglog(masses, fractional_energy_deviation, color='orange')
 plt.title('Fractional Deviation', fontsize=10)
 plt.xlabel('Mass (kg)', fontsize=8)
