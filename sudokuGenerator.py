@@ -136,3 +136,27 @@ class SudokuGenerator:
             return "Medium"
         else:
             return "Hard"
+
+
+def _print_grid(grid):
+    for r, row in enumerate(grid):
+        line = ''
+        for c, n in enumerate(row):
+            char = str(n) if n != 0 else '.'
+            line += char + (' ' if c % 3 != 2 else '  ')
+        print(line)
+        if r % 3 == 2 and r != 8:
+            print()
+
+
+if __name__ == '__main__':
+    sg = SudokuGenerator()
+    # Default missing cells; adjust for difficulty
+    missing = 40
+    puzzle, solution = sg.generate_puzzle(missing)
+
+    print(f"Generated puzzle (missing {missing} cells) - difficulty: {sg.classify_difficulty(puzzle)}\n")
+    _print_grid(puzzle)
+
+    print("\nSolution:\n")
+    _print_grid(solution)
