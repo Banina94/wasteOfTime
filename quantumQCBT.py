@@ -1,7 +1,7 @@
 import numpy as np
 from qiskit import QuantumCircuit
-from qiskit.providers.aer import AerSimulator
-from qiskit.providers.aer.noise import NoiseModel, RelaxationNoise
+from qiskit_aer import AerSimulator
+from qiskit_aer.noise import NoiseModel, RelaxationNoise
 import qiskit.circuit.library as qk_lib
 
 # --- 1. QCBT™ Constants and AI Mitigation Factor ---
