@@ -1,8 +1,8 @@
 import numpy as np
-from qiskit import QuantumCircuit
+from qiskit import QuantumCircuit, transpile
 from qiskit_aer import AerSimulator
-from qiskit_aer.noise import NoiseModel, RelaxationNoise
-import qiskit.circuit.library as qk_lib
+from qiskit_aer.noise import NoiseModel, thermal_relaxation_error
+from qiskit.circuit.library import QFTGate
 
 # --- 1. QCBT™ Constants and AI Mitigation Factor ---
 G = 6.674e-11        # Gravitational constant
@@ -36,18 +36,19 @@ T2_AI_QEC_TOTAL = 2 * T1_AI_QEC_TOTAL # Assuming T2 = 2*T1 for simplicity
 def create_shor_circuit(n_qubits):
     qc = QuantumCircuit(n_qubits)
     qc.h(range(n_qubits))
-    qc.append(qk_lib.QFT(n_qubits).inverse(), range(n_qubits))
+    qc.append(QFTGate(n_qubits).inverse(), range(n_qubits))
     qc.measure_all()
     return qc
 
 n_qubits = 8
 shor_qc = create_shor_circuit(n_qubits)
+shor_qc = transpile(shor_qc, basis_gates=['u1', 'u2', 'u3', 'h', 'x', 'y', 'z', 'cx'], optimization_level=0)
 
 # Noise Model 3: QCBT™ + Environmental + AI-QEC Mitigation (The Target)
 noise_qcbt_with_ai = NoiseModel()
 for i in range(n_qubits):
     noise_qcbt_with_ai.add_quantum_error(
-        RelaxationNoise(T1=T1_AI_QEC_TOTAL, T2=T2_AI_QEC_TOTAL, exc_prob=0, meas_error=0),
+        thermal_relaxation_error(T1_AI_QEC_TOTAL, T2_AI_QEC_TOTAL, time=1e-9, excited_state_population=0),
         ['u1', 'u2', 'u3', 'h', 'x', 'y', 'z'], # General single-qubit gates
         [i]
     )

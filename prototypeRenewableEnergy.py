@@ -1,12 +1,11 @@
 from qiskit_optimization import QuadraticProgram
 from qiskit_optimization.algorithms import MinimumEigenOptimizer
-from qiskit.algorithms import QAOA
-from qiskit.primitives import Sampler
-from qiskit.utils import algorithm_globals
+from qiskit_algorithms.minimum_eigensolvers import NumPyMinimumEigensolver
+import numpy as np
 from qiskit_optimization.converters import QuadraticProgramToQubo
 
 # Set reproducibility
-algorithm_globals.random_seed = 42
+np.random.seed(42)
 
 # Define renewable deployment problem
 problem = QuadraticProgram()
@@ -40,10 +39,8 @@ problem.linear_constraint(
 converter = QuadraticProgramToQubo()
 qubo = converter.convert(problem)
 
-# Set up QAOA solver
-sampler = Sampler()
-qaoa = QAOA(sampler=sampler, reps=1)
-optimizer = MinimumEigenOptimizer(qaoa)
+# Set up exact solver
+optimizer = MinimumEigenOptimizer(NumPyMinimumEigensolver())
 
 # Solve the QUBO
 result = optimizer.solve(qubo)
