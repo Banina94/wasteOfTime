@@ -130,9 +130,9 @@ class SudokuGenerator:
         clues = sum(1 for row in puzzle for cell in row if cell != 0)
         missing_cells = 81 - clues
 
-        if missing_cells <= 18:
+        if missing_cells <= 45:
             return "Easy"
-        elif missing_cells <= 38:
+        elif missing_cells <= 55:
             return "Medium"
         else:
             return "Hard"
@@ -151,12 +151,44 @@ def _print_grid(grid):
 
 if __name__ == '__main__':
     sg = SudokuGenerator()
-    # Default missing cells; adjust for difficulty
-    missing = 40
+    
+    # Ask user for difficulty level
+    print("=" * 50)
+    print("Welcome to Sudoku Generator!")
+    print("=" * 50)
+    print("\nSelect difficulty level:")
+    print("1. Easy")
+    print("2. Medium")
+    print("3. Hard")
+    print()
+    
+    while True:
+        choice = input("Enter your choice (1, 2, or 3): ").strip()
+        
+        if choice == '1':
+            difficulty = 'Easy'
+            missing = 35  # Easy: fewer missing cells (more clues)
+            break
+        elif choice == '2':
+            difficulty = 'Medium'
+            missing = 50  # Medium: moderate missing cells
+            break
+        elif choice == '3':
+            difficulty = 'Hard'
+            missing = 60  # Hard: more missing cells (fewer clues)
+            break
+        else:
+            print("Invalid choice. Please enter 1, 2, or 3.")
+    
+    print(f"\nGenerating {difficulty} puzzle...\n")
     puzzle, solution = sg.generate_puzzle(missing)
 
-    print(f"Generated puzzle (missing {missing} cells) - difficulty: {sg.classify_difficulty(puzzle)}\n")
+    print(f"Generated puzzle (missing {missing} cells)\n")
+    print("PUZZLE:")
+    print("-" * 30)
     _print_grid(puzzle)
 
-    print("\nSolution:\n")
+    print("\n" + "=" * 50)
+    print("SOLUTION:")
+    print("=" * 50)
     _print_grid(solution)
