@@ -1,0 +1,218 @@
+============================================================
+LATIN WORD SEARCH - 100 WORDS
+============================================================
+
+PUZZLE:
+------------------------------------------------------------
+Z R U A W D M E T C A F E A D M U I R A D I L A C L P F A I B G H Y B S J J B Q
+A X X F T Y Y W F G V G S R A I S D C A L L E Z A X H C S F L Q O R K D K N E U
+X C A L L A I A C W E O R F W P Z S O P E A R Q R N E Y I J A Q T Z Z V X M Y I
+C A L L E O R I A W S S I S N E L L A C K T W T N A Q B D B W O C C X X A U X X
+C A L L I D A D M R A Z I L L A C L P A A I X F C V B E E J G A Q A S Q I I Z Q
+R E B S U E L U R E A C I Y K C C U F I S L Y X F E W O A O L Q B L O S T H D I
+B W M F X T L K K Y N K C X A Z A T I F E A P U S I R Y C I C I K E R F N C S C
+Q K A I N A T S I L A C A L E S L P W A Y C T T Y C P U G A B Y R N E F E A G A
+W U T M K O Z S K Z T Z I N T K L A S S C J I C S I J U L L L R T D L Z L R T L
+P E J P U I Y U E S O G G I I D A J U X R A P A T O L D I Z Z C K A L M L B Y L
+G V Y K D V H I J K O Q P R C L N C F T Z E A L Q A U A A T S I L L A C A U D E
+T C R S P M H A Y P N V N A D Z L F L U O N H I V S S R O Q A P R A C P C O S R
+C A H S I V K C R A N O L Y E K K A B Y I X O G V N F T Z F O T B V G L T X X I
+A B L D F L D X M B N I Y L N N M A C L Y N S A C Q C D J U Z B S O Z A U H B A
+L A U G K V I O T R G Q Q S X D U E A S V S J T O Y Q A B N P U I I X I E P A N
+I N X O J X R B F O A X L I O R X C E R L Q Y I Q G S F L R E X V I L U V A F W
+P A J X L S U N O Z I L A C U O Y C P R J T S O A I R A D L A C S X I A C P R W
+A R L C A L L E T O F B A M M H V A A E A U L W V C R R S I I J F A E I C F A C
+S U M U L I U V X X D T U P A T B E G L N Q S A A A M A S D V C M I B H N R P Y
+H S L P G B L N I Y X B A M B A M L R N I Y V L Y U N D D Z W Z I U T E M F B D
+X E U S D I S S A T I D I L A C E U A A H G L L B Q A I N L Z U I A A A R H T S
+B A J L R U L O T I L L A C F E C M F N N E A O A A L S N H S K Y U U J H W K X
+I C I F N Z Z A O S Q C N V S X A D D H N I N T U L L U E C A L L E D A Q L A L
+V J N O Z B Y I C U A A M C T B L Z A T C U M H U F A D U M R G A L U G I L A C
+F U B B C G D C J E N L F N C G I R O M M A R A J S C I Z A C I M A I D U H F S
+I S O G H F N E J C W C K S A A G R E M I X L W L Y O L T C E J E G G C M O I I
+C A L A M I T A S L L U O U L Z I S P F A C R I T N H A Z S O C V I R P V Z Z L
+R L Y V U F L X V A I L H K E J N E F Q T R U Q G M P C U U O M V X V A K Z C L
+O J S H Y S N Y R C T A G J S S O C A L E P O S H A M F X N Z T M S L C K H T A
+T A U R Y P J O C P B T B N C A S H K B C B R E V I T A S A S A T I D I L L A C
+A W C Q F R B A N I M U S P O A U Q W T A V U A W L K E A T D K Y V B T P E F M
+C A R M G R I G T L Z S K M N T S U Z M L C C T M M B X N O K N G G C N H A A R
+L T A A A C A H P H J O A M E C A B C Q I A A E Y C V A F B Y H F R S A C D G E
+A E Q J O G E K X X I X Z S A Q P A D Q G L L L J S U C A C C K J V S L P N A T
+C I O C G G L P N T Z L N B H G L H F T A I C L K S W T C V C S C J Z A S E Y A
+H A K A B O A V A G Z G A K Y L J V H V T G A A F G F B B W B A T A G C P L I F
+G C S L O C C N R T V L N X I S I R Z K O O N C C A L I B E R A R J L G Q A Q L
+J H T C D G E O K J L M B D K Z J O S N R S E Y H Y D C V H Z U W C Z E J C U A
+Z N C A W A Y K L U M Q U D U U M H E D X U U N G A N E L L A C K E P S T D S C
+D C G R C P M Y S F R S O T O N I L L A C S S P C A L A M U S Z H L M X E A X W
+
+------------------------------------------------------------
+WORDS TO FIND:
+------------------------------------------------------------
+AMICA            AMICUS           AMOR             ANIMAL           ANIMUS         
+ANNUS            AQUA             ARBOR            ARCUS            ARMA           
+ARS              AURUM            AUTO             AVIS             AXIS           
+BAMBAM           BESTIA           BIBLIA           BILIS            BONUM          
+BONUS            BOTANUS          BRACHIUM         BREVITAS         CABALLUS       
+CABANA           CACUS            CAECA            CAEDIS           CAELUM         
+CAENATIO         CAERULEUS        CAESURA          CAFEA            CAIETA         
+CAIFAS           CAIUS            CALAMITAS        CALAMUS          CALANTICA      
+CALCANEUS        CALCAR           CALCATOR         CALCEUS          CALCULATUS     
+CALDARIA         CALDUS           CALEA            CALENDA          CALENDAE       
+CALEPO           CALESCO          CALETA           CALFATER         CALIBER        
+CALIDARIUM       CALIDITAS        CALIDUS          CALIGA           CALIGATIO      
+CALIGATOR        CALIGATUS        CALIGINOSUS      CALIGO           CALIGO         
+CALIGOSUS        CALIGULA         CALIGULA         CALIGULA         CALINA         
+CALIPASH         CALISTA          CALISTANIA       CALITA           CALIZONUS      
+CALLA            CALLAIA          CALLAN           CALLEDA          CALLENA        
+CALLENSIS        CALLENTIA        CALLENTOR        CALLEORIA        CALLERIA       
+CALLEROS         CALLETA          CALLETO          CALLEZA          CALLICIA       
+CALLIDA          CALLIDITAS       CALLIDUS         CALLINA          CALLINO        
+CALLIS           CALLISTA         CALLITO          CALLIZA        
+
+============================================================
+SOLUTION:
+============================================================
+
+Z R U A W D M E T C A F E A D M U I R A D I L A C L P F A I B G H Y B S J J B Q
+A X X F T Y Y W F G V G S R A I S D C A L L E Z A X H C S F L Q O R K D K N E U
+X C A L L A I A C W E O R F W P Z S O P E A R Q R N E Y I J A Q T Z Z V X M Y I
+C A L L E O R I A W S S I S N E L L A C K T W T N A Q B D B W O C C X X A U X X
+C A L L I D A D M R A Z I L L A C L P A A I X F C V B E E J G A Q A S Q I I Z Q
+R E B S U E L U R E A C I Y K C C U F I S L Y X F E W O A O L Q B L O S T H D I
+B W M F X T L K K Y N K C X A Z A T I F E A P U S I R Y C I C I K E R F N C S C
+Q K A I N A T S I L A C A L E S L P W A Y C T T Y C P U G A B Y R N E F E A G A
+W U T M K O Z S K Z T Z I N T K L A S S C J I C S I J U L L L R T D L Z L R T L
+P E J P U I Y U E S O G G I I D A J U X R A P A T O L D I Z Z C K A L M L B Y L
+G V Y K D V H I J K O Q P R C L N C F T Z E A L Q A U A A T S I L L A C A U D E
+T C R S P M H A Y P N V N A D Z L F L U O N H I V S S R O Q A P R A C P C O S R
+C A H S I V K C R A N O L Y E K K A B Y I X O G V N F T Z F O T B V G L T X X I
+A B L D F L D X M B N I Y L N N M A C L Y N S A C Q C D J U Z B S O Z A U H B A
+L A U G K V I O T R G Q Q S X D U E A S V S J T O Y Q A B N P U I I X I E P A N
+I N X O J X R B F O A X L I O R X C E R L Q Y I Q G S F L R E X V I L U V A F W
+P A J X L S U N O Z I L A C U O Y C P R J T S O A I R A D L A C S X I A C P R W
+A R L C A L L E T O F B A M M H V A A E A U L W V C R R S I I J F A E I C F A C
+S U M U L I U V X X D T U P A T B E G L N Q S A A A M A S D V C M I B H N R P Y
+H S L P G B L N I Y X B A M B A M L R N I Y V L Y U N D D Z W Z I U T E M F B D
+X E U S D I S S A T I D I L A C E U A A H G L L B Q A I N L Z U I A A A R H T S
+B A J L R U L O T I L L A C F E C M F N N E A O A A L S N H S K Y U U J H W K X
+I C I F N Z Z A O S Q C N V S X A D D H N I N T U L L U E C A L L E D A Q L A L
+V J N O Z B Y I C U A A M C T B L Z A T C U M H U F A D U M R G A L U G I L A C
+F U B B C G D C J E N L F N C G I R O M M A R A J S C I Z A C I M A I D U H F S
+I S O G H F N E J C W C K S A A G R E M I X L W L Y O L T C E J E G G C M O I I
+C A L A M I T A S L L U O U L Z I S P F A C R I T N H A Z S O C V I R P V Z Z L
+R L Y V U F L X V A I L H K E J N E F Q T R U Q G M P C U U O M V X V A K Z C L
+O J S H Y S N Y R C T A G J S S O C A L E P O S H A M F X N Z T M S L C K H T A
+T A U R Y P J O C P B T B N C A S H K B C B R E V I T A S A S A T I D I L L A C
+A W C Q F R B A N I M U S P O A U Q W T A V U A W L K E A T D K Y V B T P E F M
+C A R M G R I G T L Z S K M N T S U Z M L C C T M M B X N O K N G G C N H A A R
+L T A A A C A H P H J O A M E C A B C Q I A A E Y C V A F B Y H F R S A C D G E
+A E Q J O G E K X X I X Z S A Q P A D Q G L L L J S U C A C C K J V S L P N A T
+C I O C G G L P N T Z L N B H G L H F T A I C L K S W T C V C S C J Z A S E Y A
+H A K A B O A V A G Z G A K Y L J V H V T G A A F G F B B W B A T A G C P L I F
+G C S L O C C N R T V L N X I S I R Z K O O N C C A L I B E R A R J L G Q A Q L
+J H T C D G E O K J L M B D K Z J O S N R S E Y H Y D C V H Z U W C Z E J C U A
+Z N C A W A Y K L U M Q U D U U M H E D X U U N G A N E L L A C K E P S T D S C
+D C G R C P M Y S F R S O T O N I L L A C S S P C A L A M U S Z H L M X E A X W
+
+------------------------------------------------------------
+WORD LOCATIONS:
+------------------------------------------------------------
+  1. AMICA           at row 24, col 33 (left)
+  2. AMICUS          at row 23, col 18 (diagonal ↘)
+  3. AMOR            at row 12, col  9 (diagonal ↙)
+  4. ANIMAL          at row 20, col 19 (diagonal ↘)
+  5. ANIMUS          at row 30, col  7 (right)
+  6. ANNUS           at row 20, col 18 (diagonal ↗)
+  7. AQUA            at row 21, col 25 (up)
+  8. ARBOR           at row 32, col  4 (diagonal ↗)
+  9. ARCUS           at row 32, col  2 (up)
+ 10. ARMA            at row 17, col 38 (diagonal ↙)
+ 11. ARS             at row  1, col 14 (left)
+ 12. AURUM           at row 13, col 17 (diagonal ↙)
+ 13. AUTO            at row  8, col 17 (diagonal ↘)
+ 14. AVIS            at row 18, col 23 (diagonal ↗)
+ 15. AXIS            at row 13, col 35 (diagonal ↙)
+ 16. BAMBAM          at row 19, col 11 (right)
+ 17. BESTIA          at row  4, col 26 (diagonal ↙)
+ 18. BIBLIA          at row  5, col 32 (diagonal ↙)
+ 19. BILIS           at row 15, col  7 (diagonal ↖)
+ 20. BONUM           at row 20, col 24 (diagonal ↙)
+ 21. BONUS           at row 24, col  2 (diagonal ↗)
+ 22. BOTANUS         at row 32, col 29 (up)
+ 23. BRACHIUM        at row  9, col 37 (up)
+ 24. BREVITAS        at row 29, col 21 (right)
+ 25. CABALLUS        at row 32, col 15 (diagonal ↙)
+ 26. CABANA          at row 11, col  1 (down)
+ 27. CACUS           at row 33, col 29 (left)
+ 28. CAECA           at row  4, col 24 (diagonal ↗)
+ 29. CAEDIS          at row  6, col 28 (up)
+ 30. CAELUM          at row 16, col 17 (down)
+ 31. CAENATIO        at row 39, col  4 (diagonal ↗)
+ 32. CAERULEUS       at row  5, col 11 (left)
+ 33. CAESURA         at row 22, col  1 (up)
+ 34. CAFEA           at row  0, col  9 (right)
+ 35. CAIETA          at row 36, col  1 (up)
+ 36. CAIFAS          at row  3, col 19 (down)
+ 37. CAIUS           at row 12, col  7 (up)
+ 38. CALAMITAS       at row 26, col  0 (right)
+ 39. CALAMUS         at row 39, col 24 (right)
+ 40. CALANTICA       at row 35, col 35 (up)
+ 41. CALCANEUS       at row 31, col 22 (down)
+ 42. CALCAR          at row 34, col  3 (down)
+ 43. CALCATOR        at row 34, col  0 (up)
+ 44. CALCEUS         at row 28, col  9 (up)
+ 45. CALCULATUS      at row 22, col 11 (down)
+ 46. CALDARIA        at row 16, col 31 (left)
+ 47. CALDUS          at row  6, col 30 (diagonal ↙)
+ 48. CALEA           at row 36, col  6 (up)
+ 49. CALENDA         at row  3, col 33 (down)
+ 50. CALENDAE        at row 37, col 37 (up)
+ 51. CALEPO          at row 28, col 17 (right)
+ 52. CALESCO         at row 24, col 14 (down)
+ 53. CALETA          at row 34, col 32 (diagonal ↘)
+ 54. CALFATER        at row 38, col 39 (up)
+ 55. CALIBER         at row 36, col 24 (right)
+ 56. CALIDARIUM      at row  0, col 24 (left)
+ 57. CALIDITAS       at row 20, col 15 (left)
+ 58. CALIDUS         at row 27, col 27 (up)
+ 59. CALIGA          at row 23, col 20 (diagonal ↘)
+ 60. CALIGATIO       at row  8, col 23 (down)
+ 61. CALIGATOR       at row 29, col 20 (down)
+ 62. CALIGATUS       at row 16, col 17 (diagonal ↘)
+ 63. CALIGINOSUS     at row 21, col 16 (down)
+ 64. CALIGO          at row  5, col 15 (diagonal ↙)
+ 65. CALIGO          at row 10, col 14 (diagonal ↙)
+ 66. CALIGOSUS       at row 31, col 21 (down)
+ 67. CALIGULA        at row  3, col 32 (diagonal ↙)
+ 68. CALIGULA        at row 23, col  8 (diagonal ↖)
+ 69. CALIGULA        at row 23, col 39 (left)
+ 70. CALINA          at row 15, col 17 (diagonal ↗)
+ 71. CALIPASH        at row 12, col  0 (down)
+ 72. CALISTA         at row 17, col 36 (diagonal ↖)
+ 73. CALISTANIA      at row  7, col 11 (left)
+ 74. CALITA          at row  7, col 21 (up)
+ 75. CALIZONUS       at row 16, col 13 (left)
+ 76. CALLA           at row  5, col 16 (down)
+ 77. CALLAIA         at row  2, col  1 (right)
+ 78. CALLAN          at row 24, col 26 (up)
+ 79. CALLEDA         at row 22, col 29 (right)
+ 80. CALLENA         at row 38, col 31 (left)
+ 81. CALLENSIS       at row  3, col 19 (left)
+ 82. CALLENTIA       at row 11, col 36 (up)
+ 83. CALLENTOR       at row 17, col 25 (diagonal ↙)
+ 84. CALLEORIA       at row  3, col  0 (right)
+ 85. CALLERIA        at row  6, col 39 (down)
+ 86. CALLEROS        at row 11, col 34 (up)
+ 87. CALLETA         at row 36, col 23 (up)
+ 88. CALLETO         at row 17, col  3 (right)
+ 89. CALLEZA         at row  1, col 18 (right)
+ 90. CALLICIA        at row 13, col 26 (diagonal ↘)
+ 91. CALLIDA         at row  4, col  0 (right)
+ 92. CALLIDITAS      at row 29, col 39 (left)
+ 93. CALLIDUS        at row 32, col 18 (diagonal ↙)
+ 94. CALLINA         at row 13, col 18 (diagonal ↖)
+ 95. CALLINO         at row 39, col 20 (left)
+ 96. CALLIS          at row 29, col 39 (up)
+ 97. CALLISTA        at row 10, col 35 (left)
+ 98. CALLITO         at row 21, col 13 (left)
+ 99. CALLIZA         at row  4, col 16 (left)
