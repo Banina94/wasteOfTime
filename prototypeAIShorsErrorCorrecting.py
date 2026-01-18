@@ -1,6 +1,7 @@
 import numpy as np
 import tensorflow as tf
-from qiskit import QuantumCircuit, Aer, transpile, execute
+from qiskit import QuantumCircuit
+from qiskit_aer import Aer
 from qiskit.quantum_info import state_fidelity
 
 # Define the target quantum state (logical |0⟩)
@@ -21,20 +22,16 @@ def build_shor_code(weights):
 def compute_loss(weights):
     qc = build_shor_code(weights)
     backend = Aer.get_backend('statevector_simulator')
-    job = execute(qc, backend)
+    job = backend.run(qc)
     state = job.result().get_statevector()
     
     return 1 - state_fidelity(state, target_state)
 
-# Train the weights using TensorFlow gradient descent
-weights = tf.Variable(np.random.rand(3), dtype=tf.float32)
+# Simple demo training loop (non-differentiable simulator) — use numeric updates
+weights = np.random.rand(3)
 
-optimizer = tf.keras.optimizers.Adam(learning_rate=0.05)
-
-for step in range(100):
-    with tf.GradientTape() as tape:
-        loss = compute_loss(weights)
-    grads = tape.gradient(loss, [weights])
-    optimizer.apply_gradients(zip(grads, [weights]))
-    if step % 10 == 0:
-        print(f"Step {step}: Loss = {loss.numpy()}, Weights = {weights.numpy()}")
+for step in range(10):
+    loss = compute_loss(weights)
+    # tiny random perturbation update (placeholder for a real optimizer)
+    weights = weights - 0.01 * (np.random.rand(3) - 0.5)
+    print(f"Step {step}: Loss = {loss}, Weights = {weights}")
