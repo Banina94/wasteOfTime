@@ -1,0 +1,116 @@
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+class Expert(nn.Module):
+    """
+    A single expert is typically a standard Feed-Forward Network (FFN).
+    """
+    def __init__(self, input_dim, hidden_dim, output_dim):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(input_dim, hidden_dim),
+            nn.ReLU(),
+            nn.Linear(hidden_dim, output_dim)
+        )
+
+    def forward(self, x):
+        return self.net(x)
+
+class MoELayer(nn.Module):
+    """
+    Mixture of Experts Layer.
+    """
+    def __init__(self, num_experts, input_dim, hidden_dim, k=2):
+        super().__init__()
+        self.num_experts = num_experts
+        self.k = k  # Number of experts to activate per token (e.g., top-2)
+        
+        # 1. Create the Experts
+        self.experts = nn.ModuleList([
+            Expert(input_dim, hidden_dim, input_dim) for _ in range(num_experts)
+        ])
+        
+        # 2. The Gating Network (Router)
+        # Maps input to a score for each expert
+        self.gate = nn.Linear(input_dim, num_experts)
+
+    def forward(self, x):
+        # x shape: (batch_size, seq_len, input_dim)
+        batch_size, seq_len, _ = x.shape
+        
+        # Flatten input for routing: (batch * seq_len, input_dim)
+        x_flat = x.view(-1, x.size(-1))
+        
+        # --- Step 1: Gating (Routing) ---
+        # Calculate router logits
+        gate_logits = self.gate(x_flat)  # (total_tokens, num_experts)
+        
+        # Calculate probabilities (Softmax)
+        gate_probs = F.softmax(gate_logits, dim=-1)
+        
+        # Select the Top-K experts
+        weights, indices = torch.topk(gate_probs, self.k, dim=-1)
+        
+        # Normalize weights so they sum to 1 for the selected k experts
+        weights = weights / weights.sum(dim=-1, keepdim=True)
+        
+        # --- Step 2: Expert Computation ---
+        # Initialize output tensor
+        final_output = torch.zeros_like(x_flat)
+        
+        # Loop through each expert to process assigned tokens
+        # (Note: In production, this is optimized with sparse matrix operations)
+        for i in range(self.num_experts):
+            expert = self.experts[i]
+            
+            # Find which tokens were routed to this expert (checking both top-1 and top-2)
+            # Create a mask for tokens where this expert is in the top-k indices
+            mask = (indices == i).any(dim=-1)
+            
+            if mask.any():
+                # Extract tokens assigned to this expert
+                selected_tokens = x_flat[mask]
+                
+                # Process tokens through the expert
+                expert_out = expert(selected_tokens)
+                
+                # --- Step 3: Weighted Combination ---
+                # We need to multiply by the routing weight assigned to this expert
+                # Find the specific weight for this expert for these tokens
+                
+                # Create a specialized weight mask
+                # indices has shape (tokens, k), weights has shape (tokens, k)
+                # We need the specific weight where indices == i
+                
+                # Simplified weighted sum addition for clarity:
+                # (Real implementation uses scatter/gather operations for speed)
+                batch_indices = torch.where(mask)[0]
+                
+                # Find the column index (0 to k-1) where the expert index equals i
+                k_indices = torch.where(indices[mask] == i)[1]
+                
+                # Get the routing weights for these tokens
+                routing_weights = weights[mask, k_indices].unsqueeze(-1)
+                
+                # Add weighted output to final result
+                final_output[batch_indices] += expert_out * routing_weights
+
+        # Reshape back to (batch, seq, dim)
+        return final_output.view(batch_size, seq_len, -1)
+
+# Example Usage
+if __name__ == "__main__":
+    # Define dimensions
+    dim = 128
+    
+    # Create an MoE layer with 8 experts, activating top-2 per token
+    moe = MoELayer(num_experts=8, input_dim=dim, hidden_dim=dim*4, k=2)
+    
+    # Dummy input: Batch of 4, Sequence length 10
+    dummy_input = torch.randn(4, 10, dim)
+    
+    output = moe(dummy_input)
+    print(f"Input shape: {dummy_input.shape}")
+    print(f"Output shape: {output.shape}")
+    print("Success: The MoE layer processed the input using sparse experts.")
