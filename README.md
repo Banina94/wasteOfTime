@@ -1,11 +1,56 @@
-**The Paradox of Persistence**
+# Traffic Sign Recognition Neural Network
 
-The viral rise of Crazy Frog, Baby Shark, and the Annoying Orange marks an unusual yet revealing stage in the history of digital media and marketing. Each of these creations: a cartoon frog built from a ringtone, a minimalist children’s melody, and a talking fruit; demonstrates how internet culture rewards simplicity, repetition, and even irritation over traditional artistic merit. Their widespread success rests not on artistic depth but on their uncanny ability to dominate attention across demographics and borders. Together, they highlight how online platforms amplify content until it becomes inescapable, embedding itself into public consciousness whether audiences seek it or not.
+## Overview
+This project implements a convolutional neural network (CNN) to classify traffic signs from the German Traffic Sign Recognition Benchmark (GTSRB) dataset. The model is trained to recognize 43 different types of traffic signs.
 
-This phenomenon is deeply rooted in the psychology of the “earworm,” or involuntary musical imagery (INMI), a mechanism these entities expertly exploit. Each example weaponizes sound design for memorability: the synthetic buzz of Crazy Frog’s “Axel F,” the looping “doo doo doo” refrain of Baby Shark, and the shrill laughter of Annoying Orange. These auditory hooks are intentionally repetitive and rhythmically simple, exploiting how the human brain retains familiar, predictable sounds. The content’s low-effort, high-impact nature made it perfectly suited for early digital ecosystems, turning harmless novelty into unavoidable noise.
+## Experimentation Process
 
-Beyond their catchy sounds, these viral sensations reveal how pop culture can simultaneously unite and divide audiences. They create fleeting moments of shared recognition, where people across age groups and geographies can reference the same tune or meme. Yet that same ubiquity breeds backlash—viewers often express disdain through memes, parody, or “cringe” discourse, demonstrating the rapid onset of viral fatigue. Crazy Frog’s commercial release of the ringtone-based song "Axel F" reached Number One in the UK Singles Chart for four consecutive weeks in 2005, a position achieved despite widespread public complaints regarding the aggressive advertising campaign that promoted it. This episode foreshadowed the broader tension between commercialization and consumer alienation that now defines much of online culture.
+### Initial Approach
+I started with a simple CNN architecture to establish a baseline. The reasoning was to understand how the basic building blocks (convolution, pooling, and dense layers) perform on this classification task before attempting more complex variations.
 
-Despite their seemingly disposable nature, each of these cultural products evolved into a lucrative enterprise, illustrating the aggressive monetization of digital attention. Crazy Frog's single went on to achieve Platinum certification in countries like the UK, France, and Switzerland. More recently, the Korean educational company behind Baby Shark saw its flagship video, "Baby Shark Dance," become the most-viewed YouTube video of all time, surpassing 10 billion views in early 2022 and accruing an estimated $22 million in YouTube advertising revenue alone by 2023. Similarly, the Annoying Orange YouTube channel boasts over 13 million subscribers and has accumulated over 9 billion total views, successfully translating web humor into a mainstream television series and product line. These cases illustrate how “annoyance marketing” can be financially robust, transforming short-term attention into long-term intellectual property (IP) value.
+### Model Architecture
+The final implemented model consists of:
+- **Two Convolutional Blocks**: Each block contains a Conv2D layer followed by MaxPooling2D
+  - First block: 32 filters with 3x3 kernel
+  - Second block: 64 filters with 3x3 kernel
+- **Flattening Layer**: Converts 2D feature maps to 1D
+- **Dense Layers**:
+  - Hidden layer with 128 units and ReLU activation
+  - Dropout layer with 0.5 rate for regularization
+  - Output layer with 43 units (one per category) and softmax activation
 
-Ultimately, Crazy Frog, Baby Shark, and Annoying Orange encapsulate the evolution of entertainment in the age of algorithmic virality. They show how digital networks allow even absurd, low-effort content to achieve global cultural and economic significance. In this environment, repetition and recognizability often outweigh originality or critical merit, effectively demonstrating the principle that consistent exposure guarantees market saturation. These viral phenomena stand as both a satire and a symptom of a digital culture increasingly defined by its fascination with the trivial, the repetitive, and the irresistibly catchy; a system where the metric of attention is prioritized above all else.
+### Design Decisions
+
+**Convolutional Layers**: Used 32 and 64 filters respectively. This progression allows the network to learn increasingly complex features. Starting with 32 filters reduces computational cost while 64 filters in the second layer provide enough capacity for more abstract feature representations.
+
+**Pooling Layers**: Applied 2x2 MaxPooling after each convolutional block. This reduces spatial dimensions and helps the network become more robust to small translations in the input images, which is important for real-world traffic sign variations.
+
+**Dropout**: Added a 0.5 dropout rate before the output layer. This helps prevent overfitting, which is crucial when training on a dataset with 43 categories where some categories may have limited training samples.
+
+**Activation Functions**:
+- ReLU for hidden layers: Non-linear activation that helps the network learn complex patterns
+- Softmax for output layer: Appropriate for multi-class classification, providing probability distributions across all 43 classes
+
+### What Worked Well
+- **Conv2D + MaxPooling combination**: This is a proven architecture for image classification tasks. The combination effectively extracts hierarchical features from images.
+- **Dropout regularization**: The 0.5 dropout rate effectively prevents overfitting without significantly harming accuracy.
+- **Adam optimizer**: Adaptive learning rates work well for this type of problem without requiring manual learning rate tuning.
+
+### What Didn't Work Well
+- **Too few filters**: Initial attempts with fewer filters (16-32 total) struggled to achieve good accuracy.
+- **Too many dense layers**: Adding excessive dense layers after flattening increased computation without proportional accuracy gains and risked overfitting.
+- **No regularization**: Models without dropout showed signs of overfitting on the training data.
+
+### Observations
+1. **Image Size**: The 30x30 resize is quite small, but it's sufficient for this task. Larger sizes would increase computational cost significantly.
+2. **Categorical Distribution**: Different traffic sign categories likely have different numbers of training samples. The model handles this reasonably well with the current architecture.
+3. **Training Convergence**: With 10 epochs, the model shows reasonable training behavior. More epochs might improve accuracy but could lead to overfitting.
+4. **Platform Independence**: Using `os.path.join()` ensures the data loading works on Windows, macOS, and Linux without modification.
+
+### Future Improvements
+- Experiment with more convolutional layers for deeper feature extraction
+- Try different filter sizes and quantities
+- Implement data augmentation to handle class imbalance
+- Experiment with batch normalization after convolutional layers
+- Increase the number of training epochs
+- Use callbacks like EarlyStopping to prevent overfitting
