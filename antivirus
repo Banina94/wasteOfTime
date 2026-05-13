@@ -1,0 +1,219 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#include <windows.h>
+
+#define MAX_PROCESSES 100
+#define MAX_LOG_SIZE 1000
+
+typedef struct {
+    char processName[256];
+    int pid;
+    int suspicionScore;
+    char timestamp[64];
+} SuspiciousProcess;
+
+typedef struct {
+    SuspiciousProcess processes[MAX_PROCESSES];
+    int count;
+} ActivityLog;
+
+ActivityLog suspiciousLog = {0};
+
+// Get current timestamp
+void getTimestamp(char *buffer) {
+    time_t now = time(NULL);
+    struct tm *timeinfo = localtime(&now);
+    strftime(buffer, 64, "%Y-%m-%d %H:%M:%S", timeinfo);
+}
+
+// Scan for suspicious activity patterns
+int scanForSuspiciousActivity() {
+    printf("[*] Scanning for suspicious activity...\n");
+    
+    // Check for suspicious process names
+    const char *suspiciousPatterns[] = {
+        "cmd.exe", "powershell.exe", "reg.exe", "tasklist.exe",
+        "wget.exe", "curl.exe", "nc.exe", "backdoor", "trojan"
+    };
+    
+    int foundCount = 0;
+    
+    for (int i = 0; i < 9; i++) {
+        // Simulate detection logic
+        if (rand() % 10 < 3) {  // 30% chance of detection
+            SuspiciousProcess proc = {0};
+            strcpy_s(proc.processName, sizeof(proc.processName), suspiciousPatterns[i]);
+            proc.pid = 1000 + rand() % 5000;
+            proc.suspicionScore = 50 + rand() % 50;
+            getTimestamp(proc.timestamp);
+            
+            if (suspiciousLog.count < MAX_PROCESSES) {
+                suspiciousLog.processes[suspiciousLog.count++] = proc;
+                foundCount++;
+                printf("[!] Suspicious process detected: %s (PID: %d) - Score: %d%%\n",
+                       proc.processName, proc.pid, proc.suspicionScore);
+            }
+        }
+    }
+    
+    return foundCount;
+}
+
+// Check registry for suspicious modifications./my_program.exe
+
+int checkRegistry() {
+    printf("[*] Checking registry for suspicious modifications...\n");
+    
+    const char *suspiciousKeys[] = {
+        "HKLM\\Software\\Microsoft\\Windows\\Run",
+        "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+        "HKLM\\System\\CurrentControlSet\\Services"
+    };
+    
+    int foundCount = 0;
+    
+    for (int i = 0; i < 3; i++) {
+        if (rand() % 10 < 2) {  // 20% chance
+            printf("[!] Suspicious registry entry found in %s\n", suspiciousKeys[i]);
+            foundCount++;
+        }
+    }
+    
+    return foundCount;
+}
+
+// Check for unusual network connections
+int checkNetworkConnections() {
+    printf("[*] Checking network connections...\n");
+    
+    const char *suspiciousIPs[] = {
+        "192.168.1.100", "10.0.0.50", "172.16.0.1"
+    };
+    
+    int foundCount = 0;
+    
+    for (int i = 0; i < 3; i++) {
+        if (rand() % 10 < 2) {  // 20% chance
+            printf("[!] Suspicious connection to %s detected\n", suspiciousIPs[i]);
+            foundCount++;
+        }
+    }
+    
+    return foundCount;
+}
+
+// Clear suspicious processes from log
+void clearSuspiciousActivity() {
+    printf("\n[*] Clearing suspicious activity...\n");
+    
+    for (int i = 0; i < suspiciousLog.count; i++) {
+        printf("[+] Removing: %s (PID: %d) detected at %s\n",
+               suspiciousLog.processes[i].processName,
+               suspiciousLog.processes[i].pid,
+               suspiciousLog.processes[i].timestamp);
+    }
+    
+    suspiciousLog.count = 0;
+    printf("[+] Activity log cleared successfully\n");
+}
+
+// Display current suspicious activity
+void displayActivityLog() {
+    printf("\n========== SUSPICIOUS ACTIVITY LOG ==========\n");
+    
+    if (suspiciousLog.count == 0) {
+        printf("No suspicious activity detected.\n");
+        return;
+    }
+    
+    for (int i = 0; i < suspiciousLog.count; i++) {
+        printf("%d. Process: %s | PID: %d | Score: %d%% | Time: %s\n",
+               i + 1,
+               suspiciousLog.processes[i].processName,
+               suspiciousLog.processes[i].pid,
+               suspiciousLog.processes[i].suspicionScore,
+               suspiciousLog.processes[i].timestamp);
+    }
+    printf("=============================================\n");
+}
+
+// Main antivirus scan routine
+void runFullScan() {
+    printf("\n========== STARTING FULL SYSTEM SCAN ==========\n");
+    printf("Scan started at: ");
+    char timestamp[64];
+    getTimestamp(timestamp);
+    printf("%s\n\n", timestamp);
+    
+    int totalThreats = 0;
+    
+    totalThreats += scanForSuspiciousActivity();
+    totalThreats += checkNetworkConnections();
+    
+    printf("\n[*] Total threats detected: %d\n", totalThreats);
+    
+    if (totalThreats > 0) {
+        printf("[!] Suspicious activity found! Clearing...\n");
+        clearSuspiciousActivity();
+    } else {
+        printf("[+] System is clean!\n");
+    }
+}
+
+int main() {
+    srand((unsigned int)time(NULL));
+    
+    printf("================================================\n");
+    printf("         GREENTEA ANTIVIRUS SYSTEM v1.0         \n");
+    printf("================================================\n\n");
+    
+    int choice;
+    
+    while (1) {
+        printf("\n[Menu]\n");
+        printf("1. Run Full System Scan\n");
+        printf("2. Scan for Suspicious Processes\n");
+        printf("3. Check Registry\n");
+        printf("4. Check Network Connections\n");
+        printf("5. View Activity Log\n");
+        printf("6. Clear Suspicious Activity\n");
+        printf("7. Exit\n");
+        printf("\nSelect option (1-7): ");
+        
+        scanf_s("%d", &choice);
+        
+        switch (choice) {
+            case 1:
+                while(1)
+                    runFullScan();
+            case 2:
+                scanForSuspiciousActivity();
+                break;
+            case 3:
+                checkRegistry();
+                break;
+            case 4:
+                checkNetworkConnections();
+                break;
+            case 5:
+                displayActivityLog();
+                break;
+            case 6:
+                if (suspiciousLog.count > 0) {
+                    clearSuspiciousActivity();
+                } else {
+                    printf("No activity to clear.\n");
+                }
+                break;
+            case 7:
+                printf("\n[+] Exiting GreenTea Antivirus. System protected!\n");
+                return 0;
+            default:
+                printf("[-] Invalid option. Please try again.\n");
+        }
+    }
+    
+    return 0;
+}
