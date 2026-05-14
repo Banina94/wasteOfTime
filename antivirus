@@ -9,33 +9,6 @@
 #include <windows.h>
 #include <stdio.h>
 
-int background() {
-    // Get the console handle
-    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-
-    // Get the console window handle
-    HWND consoleWindow = GetConsoleWindow();
-    HDC hdc = GetDC(consoleWindow);
-
-    if (hdc == NULL) {
-        printf("Error: Unable to get device context.\n");
-        return 1;
-    }
-
-    // Define light pink color (RGB)
-    COLORREF lightPink = RGB(255, 182, 193);
-
-    // Get console window dimensions
-    RECT rect;
-    GetClientRect(consoleWindow, &rect);
-
-    // Fill the background with light pink
-    HBRUSH brush = CreateSolidBrush(lightPink);
-    FillRect(hdc, &rect, brush);
-
-    // Release resources
-    DeleteObject(brush);
-    ReleaseDC(consoleWindow, hdc);
 
 typedef struct {
     char processName[256];
@@ -193,7 +166,7 @@ void runFullScan() {
 }
 
 int main() {
-    background();
+    printf("\033[45m");
     srand((unsigned int)time(NULL));
     
     printf("================================================\n");
