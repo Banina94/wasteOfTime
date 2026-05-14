@@ -166,7 +166,7 @@ void runFullScan() {
 }
 
 int main() {
-    printf("\033[45m");
+    printf("\033[48;2;248;175;203m\033[0m\n");
     srand((unsigned int)time(NULL));
     
     printf("================================================\n");
