@@ -6,6 +6,36 @@
 
 #define MAX_PROCESSES 100
 #define MAX_LOG_SIZE 1000
+#include <windows.h>
+#include <stdio.h>
+
+int background() {
+    // Get the console handle
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+    // Get the console window handle
+    HWND consoleWindow = GetConsoleWindow();
+    HDC hdc = GetDC(consoleWindow);
+
+    if (hdc == NULL) {
+        printf("Error: Unable to get device context.\n");
+        return 1;
+    }
+
+    // Define light pink color (RGB)
+    COLORREF lightPink = RGB(255, 182, 193);
+
+    // Get console window dimensions
+    RECT rect;
+    GetClientRect(consoleWindow, &rect);
+
+    // Fill the background with light pink
+    HBRUSH brush = CreateSolidBrush(lightPink);
+    FillRect(hdc, &rect, brush);
+
+    // Release resources
+    DeleteObject(brush);
+    ReleaseDC(consoleWindow, hdc);
 
 typedef struct {
     char processName[256];
@@ -163,6 +193,7 @@ void runFullScan() {
 }
 
 int main() {
+    background();
     srand((unsigned int)time(NULL));
     
     printf("================================================\n");
@@ -173,14 +204,15 @@ int main() {
     
     while (1) {
         printf("\n[Menu]\n");
-        printf("1. Run Full System Scan\n");
-        printf("2. Scan for Suspicious Processes\n");
-        printf("3. Check Registry\n");
-        printf("4. Check Network Connections\n");
-        printf("5. View Activity Log\n");
-        printf("6. Clear Suspicious Activity\n");
-        printf("7. Exit\n");
-        printf("\nSelect option (1-7): ");
+        printf("1. Run Full System Scan Continuously\n");
+        printf("2. Run Full System Scan Once\n");
+        printf("3. Scan for Suspicious Processes\n");
+        printf("4. Check Registry\n");
+        printf("5. Check Network Connections\n");
+        printf("6. View Activity Log\n");
+        printf("7. Clear Suspicious Activity\n");
+        printf("8. Exit\n");
+        printf("\nSelect option (1-8): ");
         
         scanf_s("%d", &choice);
         
@@ -189,25 +221,28 @@ int main() {
                 while(1)
                     runFullScan();
             case 2:
-                scanForSuspiciousActivity();
+                runFullScan();
                 break;
             case 3:
-                checkRegistry();
+                scanForSuspiciousActivity();
                 break;
             case 4:
-                checkNetworkConnections();
+                checkRegistry();
                 break;
             case 5:
-                displayActivityLog();
+                checkNetworkConnections();
                 break;
             case 6:
+                displayActivityLog();
+                break;
+            case 7:
                 if (suspiciousLog.count > 0) {
                     clearSuspiciousActivity();
                 } else {
                     printf("No activity to clear.\n");
                 }
                 break;
-            case 7:
+            case 8:
                 printf("\n[+] Exiting GreenTea Antivirus. System protected!\n");
                 return 0;
             default:
